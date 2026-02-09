@@ -1,0 +1,372 @@
+{
+  "info": {
+    "name": "Majestic Marriages API",
+    "description": "Complete API collection for Majestic Marriages Event Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "majestic-marriages-api-2026"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "apiBase",
+      "value": "{{baseUrl}}/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Check API Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/health",
+              "host": ["{{apiBase}}"],
+              "path": ["health"]
+            },
+            "description": "Check if the API server is running"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Contact Form",
+      "item": [
+        {
+          "name": "Submit Contact Form",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rahul Verma\",\n  \"email\": \"rahul.verma@example.com\",\n  \"phone\": \"+91 98765 43210\",\n  \"subject\": \"Wedding Planning Services\",\n  \"message\": \"Hi, I am planning my wedding for December 2026 and would like to know more about your packages and services. Please contact me at your earliest convenience.\"\n}"
+            },
+            "url": {
+              "raw": "{{apiBase}}/contact/submit",
+              "host": ["{{apiBase}}"],
+              "path": ["contact", "submit"]
+            },
+            "description": "Submit a new contact form inquiry"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Contacts (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/contact/all?page=1&limit=20&status=new",
+              "host": ["{{apiBase}}"],
+              "path": ["contact", "all"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "status",
+                  "value": "new",
+                  "description": "Filter: new, contacted, resolved, closed"
+                }
+              ]
+            },
+            "description": "Retrieve all contact submissions (Admin only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Contact by ID (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/contact/:contactId",
+              "host": ["{{apiBase}}"],
+              "path": ["contact", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": "65f1234567890abcdef12345",
+                  "description": "MongoDB Object ID"
+                }
+              ]
+            },
+            "description": "Get a specific contact by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Contact Status (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"contacted\"\n}"
+            },
+            "url": {
+              "raw": "{{apiBase}}/contact/:contactId/status",
+              "host": ["{{apiBase}}"],
+              "path": ["contact", ":contactId", "status"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": "65f1234567890abcdef12345"
+                }
+              ]
+            },
+            "description": "Update the status of a contact (new/contacted/resolved/closed)"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Contact (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/contact/:contactId",
+              "host": ["{{apiBase}}"],
+              "path": ["contact", ":contactId"],
+              "variable": [
+                {
+                  "key": "contactId",
+                  "value": "65f1234567890abcdef12345"
+                }
+              ]
+            },
+            "description": "Delete a contact submission"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Submit Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"Wedding\",\n  \"eventDate\": \"2026-12-15\",\n  \"location\": \"Jaipur, Rajasthan\",\n  \"guestCount\": \"250 - 500\",\n  \"budgetRange\": \"₹10,00,000 - ₹20,00,000\",\n  \"name\": \"Priya Sharma\",\n  \"email\": \"priya.sharma@example.com\",\n  \"phone\": \"+91 98765 43210\",\n  \"message\": \"Looking for a grand wedding setup with traditional Rajasthani themes. Would prefer outdoor venue options.\"\n}"
+            },
+            "url": {
+              "raw": "{{apiBase}}/booking/submit",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", "submit"]
+            },
+            "description": "Submit a new event booking"
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Booking - Corporate Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"Corporate Event\",\n  \"eventDate\": \"2026-08-25\",\n  \"location\": \"Hyatt Regency, Jaipur\",\n  \"guestCount\": \"100 - 250\",\n  \"budgetRange\": \"₹5,00,000 - ₹10,00,000\",\n  \"name\": \"Amit Patel\",\n  \"email\": \"amit.patel@techcorp.com\",\n  \"phone\": \"+91 87654 32109\",\n  \"message\": \"Corporate product launch event. Need professional setup with AV equipment and catering.\"\n}"
+            },
+            "url": {
+              "raw": "{{apiBase}}/booking/submit",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", "submit"]
+            },
+            "description": "Example: Corporate event booking"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Bookings (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/booking/all?page=1&limit=20&status=pending&eventType=Wedding",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", "all"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "status",
+                  "value": "pending",
+                  "description": "Filter: pending, contacted, confirmed, completed, cancelled"
+                },
+                {
+                  "key": "eventType",
+                  "value": "Wedding",
+                  "description": "Filter by event type"
+                }
+              ]
+            },
+            "description": "Retrieve all bookings with filters"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Booking by ID (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/booking/:bookingId",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", ":bookingId"],
+              "variable": [
+                {
+                  "key": "bookingId",
+                  "value": "65f1234567890abcdef12346"
+                }
+              ]
+            },
+            "description": "Get a specific booking by MongoDB ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Booking by Reference",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/booking/reference/:reference",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", "reference", ":reference"],
+              "variable": [
+                {
+                  "key": "reference",
+                  "value": "MM2602001",
+                  "description": "Booking reference number"
+                }
+              ]
+            },
+            "description": "Get booking details using reference number (customer-facing)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Booking Status (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"confirmed\",\n  \"priority\": \"high\"\n}"
+            },
+            "url": {
+              "raw": "{{apiBase}}/booking/:bookingId/status",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", ":bookingId", "status"],
+              "variable": [
+                {
+                  "key": "bookingId",
+                  "value": "65f1234567890abcdef12346"
+                }
+              ]
+            },
+            "description": "Update booking status and priority"
+          },
+          "response": []
+        },
+        {
+          "name": "Add Admin Note to Booking",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"note\": \"Client called to confirm venue preference. Prefers outdoor garden setting.\",\n  \"addedBy\": \"admin@majesticmarriages.com\"\n}"
+            },
+            "url": {
+              "raw": "{{apiBase}}/booking/:bookingId/notes",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", ":bookingId", "notes"],
+              "variable": [
+                {
+                  "key": "bookingId",
+                  "value": "65f1234567890abcdef12346"
+                }
+              ]
+            },
+            "description": "Add an admin note to a booking for internal tracking"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Booking (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{apiBase}}/booking/:bookingId",
+              "host": ["{{apiBase}}"],
+              "path": ["booking", ":bookingId"],
+              "variable": [
+                {
+                  "key": "bookingId",
+                  "value": "65f1234567890abcdef12346"
+                }
+              ]
+            },
+            "description": "Delete a booking"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
