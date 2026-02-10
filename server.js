@@ -23,6 +23,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'https://majesticmarriages.com',
+  'https://www.majesticmarriages.com',
   'https://api.majesticmarriages.com'
 ].filter(Boolean);
 
