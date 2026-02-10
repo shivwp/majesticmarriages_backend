@@ -26,41 +26,43 @@ exports.sendContactConfirmation = async ({ name, email, subject }) => {
       <html>
       <head>
         <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; background-color: #0c0c0c; margin: 0; padding: 0; }
-          .container { max-width: 600px; margin: 20px auto; padding: 0; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
-          .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: #ffffff; padding: 40px 20px; text-align: center; }
-          .content { background: #1a1a1a; padding: 30px; color: #ffffff; }
-          .footer { background: #0c0c0c; padding: 25px; text-align: center; font-size: 13px; color: #aaaaaa; border-top: 1px solid #333; }
-          .button { display: inline-block; padding: 14px 35px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 20px 0; }
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+          .content { background: #ffffff; padding: 30px; border: 1px solid #e0e0e0; }
+          .footer { background: #f8f8f8; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px; color: #666; }
+          .button { display: inline-block; padding: 12px 30px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 20px 0; }
           .highlight { color: #D4AF37; font-weight: bold; }
-          h2 { color: #ffffff; margin-top: 0; }
-          p { color: #e0e0e0; }
-          ul li { color: #e0e0e0; margin-bottom: 8px; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 30px; color: #ffffff;">Majestic Marriages</h1>
+            <h1 style="margin: 0; font-size: 28px; color: #ffffff;">Majestic Marriages</h1>
             <p style="margin: 10px 0 0 0; opacity: 0.9; color: #ffffff;">Premium Wedding & Event Planning</p>
           </div>
           <div class="content">
-            <h2 style="color: #ffffff; font-size: 24px;">Thank You for Reaching Out!</h2>
+            <h2 style="color: #8B0000;">Thank You for Reaching Out!</h2>
             <p>Dear ${name},</p>
             <p>We have received your message regarding "<span class="highlight">${subject}</span>" and truly appreciate you taking the time to contact us.</p>
             <p>Our team at Majestic Marriages is committed to providing you with exceptional service. One of our event specialists will review your inquiry and get back to you within 24 hours.</p>
-            <p>In the meantime, feel free to explore our services and portfolio.</p>
+            <p>In the meantime, feel free to:</p>
+            <ul>
+              <li>Browse our portfolio of past events</li>
+              <li>Check out our service packages</li>
+              <li>Follow us on social media for inspiration</li>
+            </ul>
             <div style="text-align: center;">
               <a href="https://wa.me/${process.env.BUSINESS_WHATSAPP}" class="button">Chat on WhatsApp</a>
             </div>
-            <p style="margin-top: 30px;">If you have any urgent queries, please don't hesitate to call us at <strong style="color: #D4AF37;">${process.env.BUSINESS_PHONE}</strong>.</p>
-            <p>Warm regards,<br><strong style="color: #ffffff;">Team Majestic Marriages</strong></p>
+            <p style="margin-top: 30px;">If you have any urgent queries, please don't hesitate to call us at <strong>${process.env.BUSINESS_PHONE}</strong>.</p>
+            <p>Warm regards,<br><strong>Team Majestic Marriages</strong></p>
           </div>
           <div class="footer">
-            <p style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Majestic Marriages</p>
+            <p><strong>Majestic Marriages</strong></p>
             <p>C-56 First floor, Extension, Nemi Nagar, Vaishali Nagar, Jaipur, Rajasthan 302021</p>
             <p>📞 ${process.env.BUSINESS_PHONE} | 📧 ${process.env.BUSINESS_EMAIL}</p>
-            <p style="margin-top: 20px; color: #fff; font-size: 11px;">© 2026 Majestic Marriages. All rights reserved.</p>
+            <p style="margin-top: 15px; color: #999;">© 2026 Majestic Marriages. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -85,26 +87,24 @@ exports.sendContactNotification = async ({ name, email, phone, subject, message,
       <html>
       <head>
         <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; background-color: #0c0c0c; margin: 0; padding: 0; }
-          .container { max-width: 600px; margin: 20px auto; padding: 20px; background: #1a1a1a; border-radius: 12px; border: 1px solid #333; }
-          .card { background: #242424; padding: 30px; border-radius: 10px; border: 1px solid #444; }
-          .header { background: #8B0000; color: #ffffff; padding: 20px; border-radius: 8px; margin-bottom: 25px; text-align: center; }
-          .field { margin: 15px 0; padding: 12px; background: #1f1f1f; border-left: 4px solid #D4AF37; border-radius: 4px; }
-          .label { font-weight: bold; color: #D4AF37; margin-right: 10px; }
-          .message-box { background: #2d2d2d; padding: 20px; border-radius: 8px; border: 1px solid #444; margin: 20px 0; }
-          a { color: #D4AF37; text-decoration: none; }
-          p, div { color: #ffffff; }
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; background: #f8f8f8; }
+          .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+          .header { background: #8B0000; color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+          .field { margin: 15px 0; padding: 10px; background: #f8f8f8; border-left: 3px solid #D4AF37; }
+          .label { font-weight: bold; color: #8B0000; }
+          .message-box { background: #fffbf0; padding: 15px; border-radius: 5px; border: 1px solid #D4AF37; margin: 15px 0; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="card">
             <div class="header">
-              <h2 style="margin: 0; font-size: 22px; color: #ffffff;">New Contact Form Submission</h2>
+              <h2 style="margin: 0; color: #ffffff;">New Contact Form Submission</h2>
             </div>
             
             <div class="field">
-              <span class="label">Name:</span> <span>${name}</span>
+              <span class="label">Name:</span> ${name}
             </div>
             
             <div class="field">
@@ -116,22 +116,22 @@ exports.sendContactNotification = async ({ name, email, phone, subject, message,
             </div>
             
             <div class="field">
-              <span class="label">Subject:</span> <span style="color: #ffffff;">${subject}</span>
+              <span class="label">Subject:</span> ${subject}
             </div>
             
             <div class="message-box">
-              <span class="label" style="display: block; margin-bottom: 10px;">Message:</span>
-              <p style="margin: 0; white-space: pre-wrap; color: #e0e0e0;">${message}</p>
+              <span class="label">Message:</span>
+              <p style="margin: 10px 0 0 0; white-space: pre-wrap;">${message}</p>
             </div>
             
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 13px; color: #888;">
-              <p style="margin: 5px 0;"><strong>Contact ID:</strong> ${contactId}</p>
-              <p style="margin: 5px 0;"><strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #666;">
+              <p><strong>Contact ID:</strong> ${contactId}</p>
+              <p><strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
             </div>
             
-            <div style="text-align: center; margin-top: 30px;">
-              <a href="tel:${phone}" style="display: inline-block; padding: 12px 25px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">Call Now</a>
-              <a href="mailto:${email}" style="display: inline-block; padding: 12px 25px; background: #0F4C81; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">Reply Email</a>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="tel:${phone}" style="display: inline-block; padding: 10px 20px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 5px;">Call Now</a>
+              <a href="mailto:${email}" style="display: inline-block; padding: 10px 20px; background: #0F4C81; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 5px;">Reply via Email</a>
             </div>
           </div>
         </div>
@@ -162,70 +162,66 @@ exports.sendBookingConfirmation = async ({ name, email, eventType, eventDate, bo
       <html>
       <head>
         <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; background-color: #0c0c0c; margin: 0; padding: 0; }
-          .container { max-width: 600px; margin: 20px auto; padding: 0; border: 1px solid #333; border-radius: 12px; overflow: hidden; }
-          .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: #ffffff; padding: 40px 20px; text-align: center; }
-          .content { background: #1a1a1a; padding: 35px; color: #ffffff; }
-          .booking-ref { background: #D4AF37; color: #1a1a1a; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; border-radius: 8px; margin: 25px 0; letter-spacing: 2px; }
-          .info-box { background: #242424; padding: 18px; border-left: 5px solid #8B0000; margin: 15px 0; border-radius: 0 6px 6px 0; }
-          .footer { background: #0c0c0c; padding: 30px; text-align: center; font-size: 13px; color: #999; border-top: 1px solid #333; }
-          .button { display: inline-block; padding: 14px 35px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 10px 5px; }
-          h2, h3 { color: #ffffff; margin-top: 0; }
-          p { color: #e0e0e0; }
-          .tip-box { background: #1f1f1f; padding: 20px; border-radius: 8px; border: 1px solid #D4AF37; border-left: 5px solid #D4AF37; margin-top: 30px; }
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+          .content { background: #ffffff; padding: 30px; border: 1px solid #e0e0e0; }
+          .booking-ref { background: #D4AF37; color: #ffffff; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; border-radius: 5px; margin: 20px 0; }
+          .info-box { background: #f8f8f8; padding: 15px; border-left: 4px solid #8B0000; margin: 15px 0; }
+          .footer { background: #f8f8f8; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px; color: #666; }
+          .button { display: inline-block; padding: 12px 30px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 10px 5px; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 34px; color: #ffffff;">🎉 Booking Confirmed!</h1>
+            <h1 style="margin: 0; font-size: 32px; color: #ffffff;">🎉 Booking Confirmed!</h1>
             <p style="margin: 10px 0 0 0; opacity: 0.9; color: #ffffff;">Majestic Marriages</p>
           </div>
           <div class="content">
-            <h2 style="color: #ffffff; font-size: 26px;">Dear ${name},</h2>
-            <p>Thank you for choosing <strong style="color: #D4AF37;">Majestic Marriages</strong> for your special event! We're thrilled to be part of your celebration.</p>
+            <h2 style="color: #8B0000;">Dear ${name},</h2>
+            <p>Thank you for choosing <strong>Majestic Marriages</strong> for your special event! We're thrilled to be part of your celebration.</p>
             
             <div class="booking-ref">
               ${bookingReference}
             </div>
-            <p style="text-align: center; color: #aaaaaa; margin-top: -15px; font-size: 14px;">Your Booking Reference Number</p>
+            <p style="text-align: center; color: #666; margin-top: -10px;">Your Booking Reference Number</p>
             
-            <h3 style="color: #D4AF37; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 10px;">Booking Details:</h3>
+            <h3 style="color: #8B0000; margin-top: 30px;">Booking Details:</h3>
             
             <div class="info-box">
-              <strong style="color: #D4AF37;">Event Type:</strong> <span style="color: #ffffff;">${eventType}</span>
+              <strong>Event Type:</strong> ${eventType}
             </div>
             
             <div class="info-box">
-              <strong style="color: #D4AF37;">Event Date:</strong> <span style="color: #ffffff;">${formattedDate}</span>
+              <strong>Event Date:</strong> ${formattedDate}
             </div>
             
-            <h3 style="color: #D4AF37; margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 10px;">What Happens Next?</h3>
-            <ol style="color: #e0e0e0; padding-left: 20px;">
-              <li style="margin-bottom: 10px;">Our event specialist will contact you within 24 hours</li>
-              <li style="margin-bottom: 10px;">We'll schedule a detailed consultation meeting</li>
-              <li style="margin-bottom: 10px;">Together, we'll finalize all event details and preferences</li>
-              <li style="margin-bottom: 10px;">We'll create a customized event plan just for you</li>
+            <h3 style="color: #8B0000; margin-top: 30px;">What Happens Next?</h3>
+            <ol>
+              <li>Our event specialist will contact you within 24 hours</li>
+              <li>We'll schedule a detailed consultation meeting</li>
+              <li>Together, we'll finalize all event details and preferences</li>
+              <li>We'll create a customized event plan just for you</li>
             </ol>
             
-            <div style="text-align: center; margin: 40px 0;">
+            <div style="text-align: center; margin: 30px 0;">
               <a href="https://wa.me/${process.env.BUSINESS_WHATSAPP}?text=Hi, my booking reference is ${bookingReference}" class="button">Chat on WhatsApp</a>
-              <a href="tel:${process.env.BUSINESS_PHONE}" class="button" style="background: #0F4C81;">Call Us Now</a>
+              <a href="tel:${process.env.BUSINESS_PHONE}" class="button" style="background: #0F4C81; color: #ffffff !important;">Call Us</a>
             </div>
             
-            <div class="tip-box">
-              <strong style="color: #D4AF37; display: block; margin-bottom: 5px;">💡 Pro Tip:</strong> 
-              <span style="color: #ffffff;">Save this email! Your booking reference number will help us serve you better during planning.</span>
-            </div>
+            <p style="background: #fffbf0; padding: 15px; border-radius: 5px; border-left: 4px solid #D4AF37;">
+              <strong>💡 Tip:</strong> Save this email! Your booking reference number will help us serve you better.
+            </p>
             
-            <p style="margin-top: 40px; text-align: center; font-style: italic; color: #aaaaaa;">We look forward to creating magical memories together!</p>
-            <p style="text-align: center;">Warm regards,<br><strong style="color: #ffffff;">Team Majestic Marriages</strong></p>
+            <p style="margin-top: 30px;">We look forward to creating magical memories together!</p>
+            <p>Warm regards,<br><strong>Team Majestic Marriages</strong></p>
           </div>
           <div class="footer">
-            <p style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Majestic Marriages</p>
+            <p><strong>Majestic Marriages</strong></p>
             <p>C-56 First floor, Extension, Nemi Nagar, Vaishali Nagar, Jaipur, Rajasthan 302021</p>
             <p>📞 ${process.env.BUSINESS_PHONE} | 📧 ${process.env.BUSINESS_EMAIL}</p>
-            <p style="margin-top: 20px; color: #fff; font-size: 11px;">© 2026 Majestic Marriages. All rights reserved.</p>
+            <p style="margin-top: 15px; color: #999;">© 2026 Majestic Marriages. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -259,37 +255,35 @@ exports.sendBookingNotification = async ({
       <html>
       <head>
         <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; background-color: #0c0c0c; margin: 0; padding: 0; }
-          .container { max-width: 700px; margin: 20px auto; padding: 25px; background: #1a1a1a; border-radius: 12px; border: 1px solid #333; }
-          .card { background: #242424; padding: 35px; border-radius: 10px; border: 1px solid #444; }
-          .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: #ffffff; padding: 25px; border-radius: 8px; margin-bottom: 30px; text-align: center; }
-          .ref-badge { background: #D4AF37; color: #1a1a1a; padding: 12px 25px; border-radius: 6px; font-size: 22px; font-weight: bold; display: inline-block; letter-spacing: 1px; }
-          .section { margin: 30px 0; }
-          .field { margin: 12px 0; padding: 15px; background: #1f1f1f; border-left: 4px solid #D4AF37; border-radius: 4px; }
-          .label { font-weight: bold; color: #D4AF37; display: inline-block; min-width: 130px; }
-          .priority { background: #ff4444; color: #ffffff; padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
-          .message-box { background: #2d2d2d; padding: 20px; border-radius: 8px; border: 1px solid #444; margin: 20px 0; }
-          a { color: #D4AF37; text-decoration: none; }
-          p, div, span { color: #ffffff; }
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 700px; margin: 0 auto; padding: 20px; background: #f8f8f8; }
+          .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+          .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: white; padding: 20px; border-radius: 5px; margin-bottom: 20px; text-align: center; }
+          .ref-badge { background: #D4AF37; color: #ffffff; padding: 10px 20px; border-radius: 5px; font-size: 20px; font-weight: bold; display: inline-block; }
+          .section { margin: 20px 0; }
+          .field { margin: 10px 0; padding: 12px; background: #f8f8f8; border-left: 3px solid #D4AF37; }
+          .label { font-weight: bold; color: #8B0000; display: inline-block; min-width: 120px; }
+          .priority { background: #ff4444; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+          .message-box { background: #fffbf0; padding: 15px; border-radius: 5px; border: 1px solid #D4AF37; margin: 15px 0; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="card">
             <div class="header">
-              <h1 style="margin: 0; font-size: 28px; color: #ffffff;">🎊 New Event Booking</h1>
+              <h1 style="margin: 0; color: #ffffff;">🎊 New Event Booking</h1>
               <p style="margin: 10px 0 0 0; opacity: 0.9; color: #ffffff;">Action Required</p>
             </div>
             
             <div style="text-align: center; margin: 20px 0;">
               <div class="ref-badge">${bookingReference}</div>
-              <p style="margin: 10px 0; color: #aaaaaa;">Booking Reference Number</p>
+              <p style="margin: 10px 0; color: #666;">Booking Reference Number</p>
             </div>
             
             <div class="section">
-              <h3 style="color: #D4AF37; border-bottom: 1px solid #444; padding-bottom: 10px;">Client Information</h3>
+              <h3 style="color: #8B0000; border-bottom: 2px solid #D4AF37; padding-bottom: 10px;">Client Information</h3>
               <div class="field">
-                <span class="label">Name:</span> <span style="color: #ffffff;">${name}</span>
+                <span class="label">Name:</span> ${name}
               </div>
               <div class="field">
                 <span class="label">Email:</span> <a href="mailto:${email}">${email}</a>
@@ -300,46 +294,46 @@ exports.sendBookingNotification = async ({
             </div>
             
             <div class="section">
-              <h3 style="color: #D4AF37; border-bottom: 1px solid #444; padding-bottom: 10px;">Event Details</h3>
+              <h3 style="color: #8B0000; border-bottom: 2px solid #D4AF37; padding-bottom: 10px;">Event Details</h3>
               <div class="field">
-                <span class="label">Event Type:</span> <strong style="color: #ffffff;">${eventType}</strong>
+                <span class="label">Event Type:</span> <strong>${eventType}</strong>
               </div>
               <div class="field">
-                <span class="label">Event Date:</span> <strong style="color: #D4AF37;">${formattedDate}</strong>
+                <span class="label">Event Date:</span> <strong style="color: #8B0000;">${formattedDate}</strong>
               </div>
               <div class="field">
-                <span class="label">Location:</span> <span style="color: #ffffff;">${location}</span>
+                <span class="label">Location:</span> ${location}
               </div>
               <div class="field">
-                <span class="label">Guest Count:</span> <span style="color: #ffffff;">${guestCount}</span>
+                <span class="label">Guest Count:</span> ${guestCount}
               </div>
               <div class="field">
-                <span class="label">Budget Range:</span> <strong style="color: #ffffff;">${budgetRange}</strong>
+                <span class="label">Budget Range:</span> <strong>${budgetRange}</strong>
               </div>
             </div>
             
             ${message ? `
             <div class="section">
-              <h3 style="color: #D4AF37; border-bottom: 1px solid #444; padding-bottom: 10px;">Additional Message</h3>
+              <h3 style="color: #8B0000; border-bottom: 2px solid #D4AF37; padding-bottom: 10px;">Additional Message</h3>
               <div class="message-box">
-                <p style="margin: 0; white-space: pre-wrap; color: #e0e0e0;">${message}</p>
+                <p style="margin: 0; white-space: pre-wrap;">${message}</p>
               </div>
             </div>
             ` : ''}
             
-            <div style="margin-top: 30px; padding: 25px; background: #1f1f1f; border-radius: 8px; border: 2px solid #D4AF37;">
-              <p style="margin: 0 0 15px 0;"><span class="priority">ACTION REQUIRED</span></p>
-              <p style="margin: 0; color: #ffffff;"><strong>⏰ Follow-up:</strong> Please contact the client within 24 hours to confirm details.</p>
+            <div style="margin-top: 25px; padding: 20px; background: #fffbf0; border-radius: 5px; border: 2px solid #D4AF37;">
+              <p style="margin: 0 0 10px 0;"><span class="priority">ACTION REQUIRED</span></p>
+              <p style="margin: 0;"><strong>⏰ Follow-up Required:</strong> Contact client within 24 hours</p>
             </div>
             
-            <div style="text-align: center; margin: 40px 0;">
-              <a href="tel:${phone}" style="display: inline-block; padding: 14px 30px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 10px;">📞 Call Client</a>
-              <a href="mailto:${email}" style="display: inline-block; padding: 14px 30px; background: #0F4C81; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 10px;">📧 Email Client</a>
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="tel:${phone}" style="display: inline-block; padding: 12px 25px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 5px;">📞 Call Client</a>
+              <a href="mailto:${email}" style="display: inline-block; padding: 12px 25px; background: #0F4C81; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 5px;">📧 Email Client</a>
             </div>
             
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; font-size: 13px; color: #888;">
-              <p style="margin: 5px 0;"><strong>Booking ID:</strong> ${bookingId}</p>
-              <p style="margin: 5px 0;"><strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #666;">
+              <p><strong>Booking ID:</strong> ${bookingId}</p>
+              <p><strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
             </div>
           </div>
         </div>
