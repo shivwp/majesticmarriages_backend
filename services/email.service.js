@@ -60,7 +60,7 @@ exports.sendContactConfirmation = async ({ name, email, subject }) => {
             <p style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Majestic Marriages</p>
             <p>C-56 First floor, Extension, Nemi Nagar, Vaishali Nagar, Jaipur, Rajasthan 302021</p>
             <p>📞 ${process.env.BUSINESS_PHONE} | 📧 ${process.env.BUSINESS_EMAIL}</p>
-            <p style="margin-top: 20px; color: #777; font-size: 11px;">© 2026 Majestic Marriages. All rights reserved.</p>
+            <p style="margin-top: 20px; color: #fff; font-size: 11px;">© 2026 Majestic Marriages. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -225,7 +225,7 @@ exports.sendBookingConfirmation = async ({ name, email, eventType, eventDate, bo
             <p style="color: #ffffff; font-weight: bold; margin-bottom: 5px;">Majestic Marriages</p>
             <p>C-56 First floor, Extension, Nemi Nagar, Vaishali Nagar, Jaipur, Rajasthan 302021</p>
             <p>📞 ${process.env.BUSINESS_PHONE} | 📧 ${process.env.BUSINESS_EMAIL}</p>
-            <p style="margin-top: 20px; color: #555; font-size: 11px;">© 2026 Majestic Marriages. All rights reserved.</p>
+            <p style="margin-top: 20px; color: #fff; font-size: 11px;">© 2026 Majestic Marriages. All rights reserved.</p>
           </div>
         </div>
       </body>
