@@ -51,8 +51,13 @@ exports.submitBooking = async (req, res) => {
       await emailService.sendBookingConfirmation({
         name,
         email,
+        phone,
         eventType,
         eventDate,
+        location,
+        guestCount,
+        budgetRange,
+        message,
         bookingReference: booking.bookingReference
       });
     } catch (emailError) {
@@ -107,7 +112,7 @@ exports.submitBooking = async (req, res) => {
 exports.getAllBookings = async (req, res) => {
   try {
     const { status, eventType, page = 1, limit = 20, sortBy = '-createdAt' } = req.query;
-    
+
     const query = {};
     if (status) query.status = status;
     if (eventType) query.eventType = eventType;
@@ -170,8 +175,8 @@ exports.getBookingById = async (req, res) => {
 // Get booking by reference number
 exports.getBookingByReference = async (req, res) => {
   try {
-    const booking = await Booking.findOne({ 
-      bookingReference: req.params.reference 
+    const booking = await Booking.findOne({
+      bookingReference: req.params.reference
     }).select('-userAgent -ipAddress -adminNotes');
 
     if (!booking) {

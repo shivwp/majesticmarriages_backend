@@ -144,7 +144,10 @@ exports.sendContactNotification = async ({ name, email, phone, subject, message,
 };
 
 // Send booking confirmation to customer
-exports.sendBookingConfirmation = async ({ name, email, eventType, eventDate, bookingReference }) => {
+exports.sendBookingConfirmation = async ({
+  name, email, phone, eventType, eventDate, location,
+  guestCount, budgetRange, message, bookingReference
+}) => {
   const transporter = createTransporter();
   const formattedDate = new Date(eventDate).toLocaleDateString('en-IN', {
     weekday: 'long',
@@ -167,7 +170,8 @@ exports.sendBookingConfirmation = async ({ name, email, eventType, eventDate, bo
           .header { background: linear-gradient(135deg, #8B0000 0%, #0F4C81 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
           .content { background: #ffffff; padding: 30px; border: 1px solid #e0e0e0; }
           .booking-ref { background: #D4AF37; color: #ffffff; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; border-radius: 5px; margin: 20px 0; }
-          .info-box { background: #f8f8f8; padding: 15px; border-left: 4px solid #8B0000; margin: 15px 0; }
+          .info-box { background: #f8f8f8; padding: 12px; border-left: 4px solid #8B0000; margin: 10px 0; }
+          .label { font-weight: bold; color: #8B0000; display: inline-block; min-width: 120px; }
           .footer { background: #f8f8f8; padding: 20px; text-align: center; border-radius: 0 0 10px 10px; font-size: 12px; color: #666; }
           .button { display: inline-block; padding: 12px 30px; background: #8B0000; color: #ffffff !important; text-decoration: none; border-radius: 5px; margin: 10px 5px; }
         </style>
@@ -187,15 +191,38 @@ exports.sendBookingConfirmation = async ({ name, email, eventType, eventDate, bo
             </div>
             <p style="text-align: center; color: #666; margin-top: -10px;">Your Booking Reference Number</p>
             
-            <h3 style="color: #8B0000; margin-top: 30px;">Booking Details:</h3>
+            <h3 style="color: #8B0000; margin-top: 30px; border-bottom: 2px solid #D4AF37; padding-bottom: 10px;">Your Booking Details:</h3>
             
             <div class="info-box">
-              <strong>Event Type:</strong> ${eventType}
+              <span class="label">Event Type:</span> ${eventType}
             </div>
             
             <div class="info-box">
-              <strong>Event Date:</strong> ${formattedDate}
+              <span class="label">Event Date:</span> ${formattedDate}
             </div>
+
+            <div class="info-box">
+              <span class="label">Location:</span> ${location}
+            </div>
+
+            <div class="info-box">
+              <span class="label">Guest Count:</span> ${guestCount}
+            </div>
+
+            <div class="info-box">
+              <span class="label">Budget Range:</span> ${budgetRange}
+            </div>
+
+            <div class="info-box">
+              <span class="label">Phone:</span> ${phone}
+            </div>
+
+            ${message ? `
+            <div style="margin-top: 20px;">
+              <h4 style="color: #8B0000; margin-bottom: 10px;">Your Message:</h4>
+              <p style="background: #fffbf0; padding: 15px; border-radius: 5px; border: 1px solid #D4AF37; margin: 0; white-space: pre-wrap;">${message}</p>
+            </div>
+            ` : ''}
             
             <h3 style="color: #8B0000; margin-top: 30px;">What Happens Next?</h3>
             <ol>
@@ -228,7 +255,6 @@ exports.sendBookingConfirmation = async ({ name, email, eventType, eventDate, bo
       </html>
     `
   };
-
   await transporter.sendMail(mailOptions);
 };
 

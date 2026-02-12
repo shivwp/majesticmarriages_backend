@@ -286,8 +286,8 @@ EMAIL_USER=your-email@gmail.com
 EMAIL_PASSWORD=your-app-password
 EMAIL_FROM=info@majesticmarriages.com
 BUSINESS_EMAIL=info@majesticmarriages.com
-BUSINESS_PHONE=+919849051540
-BUSINESS_WHATSAPP=919849051540
+BUSINESS_PHONE=+91 8949051540
+BUSINESS_WHATSAPP=+91 8949051540
 FRONTEND_URL=http://localhost:5173
 ADMIN_EMAILS=admin@majesticmarriages.com
 ```
