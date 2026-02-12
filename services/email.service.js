@@ -53,7 +53,7 @@ exports.sendContactConfirmation = async ({ name, email, subject }) => {
               <li>Follow us on social media for inspiration</li>
             </ul>
             <div style="text-align: center;">
-              <a href="https://wa.me/${process.env.BUSINESS_WHATSAPP}" class="button">Chat on WhatsApp</a>
+              <a href="https://api.whatsapp.com/send/?phone=${process.env.BUSINESS_WHATSAPP}" class="button">Chat on WhatsApp</a>
             </div>
             <p style="margin-top: 30px;">If you have any urgent queries, please don't hesitate to call us at <strong>${process.env.BUSINESS_PHONE}</strong>.</p>
             <p>Warm regards,<br><strong>Team Majestic Marriages</strong></p>
@@ -233,7 +233,7 @@ exports.sendBookingConfirmation = async ({
             </ol>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://wa.me/${process.env.BUSINESS_WHATSAPP}?text=Hi, my booking reference is ${bookingReference}" class="button">Chat on WhatsApp</a>
+              <a href="https://api.whatsapp.com/send/?phone=${process.env.BUSINESS_WHATSAPP}&text=Hi, my booking reference is ${bookingReference}" class="button">Chat on WhatsApp</a>
               <a href="tel:${process.env.BUSINESS_PHONE}" class="button" style="background: #0F4C81; color: #ffffff !important;">Call Us</a>
             </div>
             
